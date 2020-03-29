@@ -12,7 +12,7 @@ A dashboard I'm making for people to visualize their Spotify songs, artists, alb
 3. Open the '.env' file and replace the placeholder with the credentials you obtained.
 4. Run the following
 ```bash
-pip install -r requirements
+pip install -r requirements.txt
 python server.py
 ```
 4. Go to your browser and go to: http://localhost:8080 
