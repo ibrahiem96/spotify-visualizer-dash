@@ -12,10 +12,19 @@ $(function() {
 
     $.get('/track_features?'+$.param({artist: artist}), function(artist_tracks) {
 
+        track = artist_tracks[0]
+        features = artist_tracks[0].features
+        features.forEach(function(feature){
+            let div = $('<div class="sp-entity-container"><a href='+feature.track_href+'>Track Name: '+track.track+'</div>');
+            //TODO Include visual analysis for song
 
-    	let div = $('<h1>hello</h1>');
-    	// show the track information
 
+           div.appendTo('#track-features');
+        // show the track information
+    
+        });
+
+    	
     });
 
     // Send a request to our backend (server.py) to get new releases for the currently selected country
