@@ -1,7 +1,7 @@
 from __future__ import print_function    # (at top of module)
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
-
+from dotenv import load_dotenv
 from flask import Flask, request, render_template, jsonify
 
 import json
@@ -10,6 +10,9 @@ import sys
 import os
 
 # Authenticate with Spotify using the Client Credentials flow
+
+load_dotenv()
+
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
@@ -49,13 +52,13 @@ def track_features():
 
     print(artist)
 
-    results = sp.search(q=artist, limit=5, offset=0)
+    results = sp.search(q=artist, limit=1, offset=0)
     features = []
     data = []
     for idx, track in enumerate(results['tracks']['items']):
         print(idx+1, track['name'], track['id'])
-        features += sp.audio_features(str(track['id']))
-        data.append({'artist': artist, track['name']: features})
+        features = sp.audio_features(str(track['id']))
+        data.append({'track': track['name'], 'features': features})
         # print(json.dumps(features, indent=4)) 
 
     return jsonify(data)
