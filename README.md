@@ -9,7 +9,12 @@ A dashboard I'm making for people to visualize their Spotify songs, artists, alb
 ## How to Run
 1. Clone the repository
 2. cd into the root directory of the repo
-3. Open the '.env' file and replace the placeholder with the credentials you obtained.
+3. Run the following (replace the XXXXX with the credentials you obtained)
+```bash
+touch .env
+echo "SPOTIPY_CLIENT_ID=XXXXXXXXXX" >> .env
+echo "SPOTIPY_CLIENT_SECRET=XXXXXXXXXX" >> .env
+```
 4. Run the following
 ```bash
 pip install -r requirements.txt
